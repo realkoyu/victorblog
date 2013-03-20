@@ -1,11 +1,10 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
-</html>
+<% include header %>
+<div class="container">
+    <h3>Articles List</h3>
+    <ul>
+        <% for(var i=0;i<articles.length;i++){ %>
+        <li><a target="_self" href="/detail/<%= articles[i].id%>"><%= articles[i].title %> <%= articles[i].createdAt%></a></li>
+        <% } %>
+    </ul>
+</div>
+<% include footer %>

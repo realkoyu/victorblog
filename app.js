@@ -5,6 +5,7 @@
 
 var express = require('express')
   , routes = require('./routes')
+  , worker = require('./routes/worker')
   , user = require('./routes/user')
   , http = require('http')
   , path = require('path');
@@ -28,6 +29,10 @@ app.configure('development', function(){
 });
 
 app.get('/', routes.index);
+app.get('/create', worker.create);
+app.post('/create', worker.createPost);
+
+app.get('/detail/:id', routes.detail);
 app.get('/users', user.list);
 
 http.createServer(app).listen(app.get('port'), process.env.IP, function(){
